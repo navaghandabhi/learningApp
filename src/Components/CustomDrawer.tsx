@@ -1,12 +1,10 @@
 // CustomDrawer.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Switch } from 'react-native';
 import { DrawerContentComponentProps, DrawerContentScrollView, DrawerHeaderProps, DrawerItemList, createDrawerNavigator } from '@react-navigation/drawer';
 import { Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import FIcon from 'react-native-vector-icons/Feather';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
-import HomeScreen from '../screens/HomeScreen';
 // type Props = DrawerHeaderProps;
 type Props = DrawerContentComponentProps;
 const Drawer = createDrawerNavigator();
@@ -16,14 +14,17 @@ const CustomDrawer = ({ props }: Props) => {
     return (
         <View style={styles.drawerStyle}>
             <DrawerContentScrollView>
-            <ImageBackground style={[{ padding: 20 }, styles.drawerHeader]} source={require('../../assets/images/bgimage.jpg')}>
-                        <Image style={styles.userImage} source={imageSource} />
-                        <Text style={styles.drawerHeaderText}>Jay Shree Ram</Text>
-                    </ImageBackground>
-                    <View style={styles.drawerItemStyle}>
-                      <DrawerItemList {...props}></DrawerItemList>  
-                    </View>
-                
+                <ImageBackground style={[{ padding: 20 }, styles.drawerHeader]} source={require('../../assets/images/bgimage.jpg')}>
+                    <Image style={styles.userImage} source={imageSource} />
+                    <Text style={styles.drawerHeaderText}>Jay Shree Ram</Text>
+                </ImageBackground>
+                <View style={styles.drawerItemStyle}>
+                    <DrawerItemList {...props}></DrawerItemList>
+                </View>
+                <View style={styles.switchTile}>
+                    <Text style={styles.switchText}>Change Theme</Text>
+                    <Switch />
+                </View>
 
                 {/* <View>
                     <ImageBackground style={[{ padding: 20 }, styles.drawerHeader]} source={require('../../assets/images/bgimage.jpg')}>
@@ -62,7 +63,17 @@ const CustomDrawer = ({ props }: Props) => {
 
 const styles = StyleSheet.create({
     drawerItemStyle: {
-        marginTop:10,
+        marginTop: 10,
+    },
+    switchTile: {
+        marginTop:16,
+        paddingHorizontal:16,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    switchText: {
+
     },
     drawerStyle: {
         flex: 1,
@@ -96,7 +107,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
     },
     drawerItemText: {
-        color:'#2B2A4C',
+        color: '#2B2A4C',
         marginLeft: 16,
         fontSize: 16,
     },

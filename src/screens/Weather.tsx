@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Setting() {
+const Weather = () => {
   return (
     <View>
-      <Text>Setting</Text>
+      <Text>Weather</Text>
     </View>
   )
 }
+
+export default Weather
 
 const styles = StyleSheet.create({})
