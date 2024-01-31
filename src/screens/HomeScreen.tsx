@@ -1,5 +1,5 @@
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Setting from './Setting';
 import Dashboard from './Dashboard';
@@ -7,8 +7,25 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Profile from './Profile';
 import Calculator from './Calculator';
 import Weather from './Weather';
+import { PermissionsAndroid } from 'react-native';
+import { PERMISSIONS } from 'react-native-permissions';
+
+
+
 const Tab = createBottomTabNavigator();
 function HomeScreen() {
+
+  const requestPermission = () => {
+    PermissionsAndroid.check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((value) =>{
+      console.log("Permission : ",value)
+      if(value == false){
+        PermissionsAndroid.request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+      }
+    })
+  }
+  useEffect(() => {
+    requestPermission()
+  }, [])
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -58,7 +75,7 @@ function HomeScreen() {
       <Tab.Screen name="Settings" component={Setting} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Calculator" component={Calculator} />
-      <Tab.Screen name="Weather" component={Weather} />
+      <Tab.Screen name="Weather" component={Weather} options={{ headerShown: false }} />
     </Tab.Navigator>
   )
 }

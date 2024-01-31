@@ -16,6 +16,7 @@ import Calculator from './src/screens/Calculator';
 import Weather from './src/screens/Weather';
 import StopwatchView from './src/screens/StopwatchView';
 import TimerView from './src/screens/TimerView';
+import ImagePickerView from './src/screens/ImagePickerView';
 
 export const Drawer = createDrawerNavigator();
 
@@ -82,6 +83,10 @@ function App() {
           <Drawer.Screen name="TimerView" component={TimerView} options={{
             title: "TimerView",
             drawerIcon: ({ color, size }) => (<Icon name='timer' color={color} size={size}></Icon>)
+          }} />
+          <Drawer.Screen name="ImagePickerView" component={ImagePickerView} options={{
+            title: "ImagePickerView",
+            drawerIcon: ({ color, size }) => (<Icon name='image' color={color} size={size}></Icon>)
           }} />
         </Drawer.Navigator>
       </AppContext.Provider>
