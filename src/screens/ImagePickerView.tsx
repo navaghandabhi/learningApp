@@ -13,7 +13,7 @@ export default function ImagePickerView() {
     }, () => { });
     console.log(result.assets?.forEach
       ((item) => {
-        console.log(item.uri);
+        // console.log(item.uri);
         setPickedImage(item.uri)
       }
       ));
@@ -27,7 +27,7 @@ export default function ImagePickerView() {
     }, () => { });
     console.log(result.assets?.forEach
       ((item) => {
-        console.log(item.uri);
+        // console.log(item.uri);
         setCameraImage(item.uri);
       }
       ));
