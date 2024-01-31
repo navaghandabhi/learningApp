@@ -17,7 +17,7 @@ function HomeScreen() {
 
   const requestPermission = () => {
     PermissionsAndroid.check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((value) =>{
-      console.log("Permission : ",value)
+      // console.log("Permission : ",value)
       if(value == false){
         PermissionsAndroid.request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
       }

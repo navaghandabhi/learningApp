@@ -1,8 +1,19 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native'
+import React, { PropsWithChildren, useState } from 'react'
 import { Button } from 'react-native'
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
+import SummerImage from '../../assets/images/sumer.jpg'
+// import SummerImage from 'https://flutterawesome.com/content/images/2021/08/6.jpg'
 
+type ImageProps = PropsWithChildren<{
+  imageUrl: ImageSourcePropType
+}>
+
+const CustomImage = ({ imageUrl }: ImageProps) => {
+  return (
+    <Image style={styles.imageStyle} source={imageUrl} ></Image>
+  )
+}
 export default function ImagePickerView() {
   const [pickedImage, setPickedImage] = useState();
   const [cameraImage, setCameraImage] = useState();
@@ -34,6 +45,7 @@ export default function ImagePickerView() {
   }
   return (
     <View>
+      <CustomImage imageUrl={SummerImage}/>
       <Button title='Pick Image From Gallery' onPress={imagePick} />
       {pickedImage == null ? <View /> :
         <Image source={{ uri: pickedImage }} style={styles.imageStyle}></Image>}
@@ -46,10 +58,11 @@ export default function ImagePickerView() {
 
 const styles = StyleSheet.create({
   imageStyle: {
-    height: '30%',
-    width: '30%',
+    height: 200,
+    width: 200,
     borderRadius: 12,
     alignSelf: 'center',
     margin: 8
-  }
+  },
+
 })
