@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import DatePicker from 'react-native-date-picker'
 import moment from 'moment'
+import CustomDatePicker from '../Components/CustomDatePicker'
 
 export default function DateAndTimePickers() {
     const [date, setDate] = useState(new Date())
@@ -11,8 +12,14 @@ export default function DateAndTimePickers() {
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenTime, setIsOpenTime] = useState(false)
     const [isOpenDateTime, setIsOpenDateTime] = useState(false)
+    const [customDate, setCustomDate] = useState(new Date())
+
     return (
         <View>
+            <CustomDatePicker value={customDate} onConfirm={setCustomDate} />
+            <Button title='print Date' onPress={() => {
+                console.log(customDate.toLocaleDateString());
+            }} />
             <TextInput placeholder="Date " style={styles.datePickerStyle} onGestureEvent={() => { setIsOpen(true) }} readOnly={true} value={moment(date).format("DD MMM YYYY")}></TextInput>
             <TextInput placeholder="Time" style={styles.datePickerStyle} onGestureEvent={() => { setIsOpenTime(true) }} readOnly={true} value={moment(time).format("hh:mm a")}></TextInput>
             <TextInput placeholder="DateTime" style={styles.datePickerStyle} onGestureEvent={() => { setIsOpenDateTime(true) }} readOnly={true} value={moment(dateTime).format('DD/MM/yyyy hh:mm a')}></TextInput>
@@ -20,7 +27,7 @@ export default function DateAndTimePickers() {
             <DatePicker
                 modal
                 open={isOpen}
-                onCancel={()=>{
+                onCancel={() => {
                     setIsOpen(false)
                 }}
                 onConfirm={date => {
@@ -35,7 +42,7 @@ export default function DateAndTimePickers() {
             <DatePicker
                 modal
                 open={isOpenTime}
-                onCancel={()=>{
+                onCancel={() => {
                     setIsOpenTime(false)
                 }}
                 onConfirm={date => {
@@ -50,7 +57,7 @@ export default function DateAndTimePickers() {
             <DatePicker
                 modal
                 open={isOpenDateTime}
-                onCancel={()=>{
+                onCancel={() => {
                     setIsOpenDateTime(false)
                 }}
                 onConfirm={date => {
@@ -73,10 +80,10 @@ const styles = StyleSheet.create({
         width: "auto",
         borderWidth: 1,
         marginHorizontal: 16,
-        marginTop:16,
+        marginTop: 16,
         borderRadius: 8,
-        color:'black',
-        paddingHorizontal:16,
+        color: 'black',
+        paddingHorizontal: 16,
         fontSize: 18
     }
 })
