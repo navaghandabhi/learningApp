@@ -1,26 +1,34 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Switch } from 'react-native-gesture-handler'
-import { AppContext } from '../data/Contexts/AppContext'
 
 export default function Setting() {
   // const {isDarkMode,setDarkMode }= useContext(AppContext)
-  const [isDarkMode, setDarkMode] = useState(true);
+  const [isDarkMode, setDarkMode] = useState(false);
+  const toggleSwitch1 = () => setDarkMode(previousState => !previousState);
+
   return (
     <View>
-
       <View style={styles.switchTile}>
-        <Text>Change Theme</Text>
-        <Switch value={isDarkMode} onChange={()=>{setDarkMode(prev =>!prev)}}/> 
+        <Text style={styles.switchTitle}>Change Theme</Text>
+        <Switch
+          onValueChange={toggleSwitch1}
+          value={isDarkMode}
+        />
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  switchTitle: {
+    color: 'black',
+    width: '50%'
+  },
   switchTile: {
-    flex: 1,
-    marginTop:50,
+    // flex: 1,
+    marginTop: 50,
+    marginHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between'
   }

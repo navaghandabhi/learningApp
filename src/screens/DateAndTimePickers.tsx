@@ -4,7 +4,11 @@ import { TextInput } from 'react-native-gesture-handler'
 import DatePicker from 'react-native-date-picker'
 import moment from 'moment'
 import CustomDatePicker from '../Components/CustomDatePicker'
-
+function subtractDays(date: Date, days: number): Date {
+    var valueDate = date.valueOf();
+    valueDate -= 86400000 * days;
+    return new Date(valueDate);
+  }
 export default function DateAndTimePickers() {
     const [date, setDate] = useState(new Date())
     const [time, setTime] = useState(new Date())
@@ -12,10 +16,10 @@ export default function DateAndTimePickers() {
     const [isOpen, setIsOpen] = useState(false)
     const [isOpenTime, setIsOpenTime] = useState(false)
     const [isOpenDateTime, setIsOpenDateTime] = useState(false)
-    const [customDate, setCustomDate] = useState(new Date())
-
+    const [customDate, setCustomDate] = useState(subtractDays(new Date(), 1))
+   
     return (
-        <View>
+        <View> 
             <CustomDatePicker value={customDate} onConfirm={setCustomDate} />
             <Button title='print Date' onPress={() => {
                 console.log(customDate.toLocaleDateString());

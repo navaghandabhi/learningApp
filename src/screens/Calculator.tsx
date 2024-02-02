@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   btnBox: {
-    marginBottom:65,
     backgroundColor: '#D4E7C5',
     paddingHorizontal: 8,
     paddingVertical: 8,
