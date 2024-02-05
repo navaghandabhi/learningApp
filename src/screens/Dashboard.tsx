@@ -4,6 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Setting from './Setting';
 import Profile from './Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
+import CustomButton from '../Components/CustomButton';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 const Tab = createBottomTabNavigator();
 
 export default function Dashboard() {
@@ -53,7 +56,9 @@ export default function Dashboard() {
         }
       })}
     >
-      <Tab.Screen name="MyDashboard" component={MyDashboard} options={{ headerShown: false, }} />
+      <Tab.Screen name="MyDashboard" component={MyDashboard} options={{
+        headerShown: false,
+      }} />
       <Tab.Screen name="Settings" component={Setting} options={{ headerShown: false, }} />
       <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false, }} />
       {/* <Tab.Screen name="Calculator" component={Calculator} />
@@ -63,6 +68,11 @@ export default function Dashboard() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    paddingBottom:100,
+    justifyContent: 'space-between'
+  },
   userImage: {
     borderRadius: 12,
     borderColor: 'white',
@@ -85,14 +95,20 @@ const styles = StyleSheet.create({
 
 )
 
-function MyDashboard() {
+type MyDashboardProps = NativeStackNavigationProp<RootStackParamList, "MyDashboard">
+export function MyDashboard({ navigation }: MyDashboardProps) {
   const imageSource = require('../../assets/images/shri_ram.jpg');
   return (
-    <View>
-      <ImageBackground source={imageSource} style={{ padding: 20, height: '102%' }}>
+
+    <ImageBackground source={imageSource} style={{ padding: 20, height: '102%' }}>
+      <View style={styles.container}>
         <Text style={{ color: 'white' }}>Jay Shree Ram</Text>
-        <Image style={styles.userImage} source={require('../../assets/images/shri_ram.jpg')} />
-      </ImageBackground>
-    </View>
+        {/* s<Image style={styles.userImage} source={require('../../assets/images/shri_ram.jpg')} /> */}
+        <CustomButton title="Custom Home" onPress={() => {
+          navigation.push("CustomHome");
+        }} />
+      </View>
+    </ImageBackground>
+
   );
 }

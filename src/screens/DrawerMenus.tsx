@@ -1,4 +1,4 @@
-import {  StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React, { useEffect, useMemo, useState } from 'react'
 import Setting from './Setting';
 import Dashboard from './Dashboard';
@@ -43,16 +43,17 @@ function DrawerMenus() {
     <AppContext.Provider value={appContext}>
       <Drawer.Navigator
         initialRouteName='HomeScreen'
-        screenOptions={{
+        screenOptions={({navigation}) => ({
           drawerActiveBackgroundColor: '#E36414',
           drawerActiveTintColor: 'white',
           drawerInactiveTintColor: '#2B2A4C',
+          // headerLeft: (props) => <Icon name='home' style={styles.iconMenu} onPress={() => { navigation.toggleDrawer()}} size={26}></Icon>,
           drawerLabelStyle: {
             marginLeft: -25,
             fontSize: 15,
             fontFamily: 'Roboto-Medium'
           }
-        }}
+        })}
         drawerContent={(props) => <CustomDrawer props={props} />}>
         <Drawer.Screen name="HomeScreen" component={Dashboard} options={{
           // headerShown: false,
@@ -115,6 +116,9 @@ function DrawerMenus() {
 export default DrawerMenus;
 
 const styles = StyleSheet.create({
+  iconMenu: {
+    paddingLeft: 8,
+  },
   shadow: {
     shadowColor: '#7F5DF0',
     shadowOffset: {
