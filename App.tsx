@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PostDetailsScreen from './src/screens/PostDetailsScreen';
 import { MyDashboard } from './src/screens/Dashboard';
 import CustomHome from './src/screens/CustomHome';
+import TicTacToe from './src/screens/TicTacToe';
 
 
 export type RootStackParamList = {
@@ -16,6 +17,7 @@ export type RootStackParamList = {
   PostDetailsScreen: { id: string };
   MyDashboard:undefined;
   CustomHome:undefined;
+  TicTacToe:undefined;
 }
 export const Stack = createNativeStackNavigator<RootStackParamList>()
 export type DrawerParamList = {
@@ -36,6 +38,11 @@ function App() {
           name='MyDashboard'
           component={MyDashboard}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='TicTacToe'
+          component={TicTacToe}
+          options={{  }}
         />
         <Stack.Screen
           name='CustomHome'

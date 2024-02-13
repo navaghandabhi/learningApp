@@ -103,7 +103,11 @@ export function MyDashboard({ navigation }: MyDashboardProps) {
     <ImageBackground source={imageSource} style={{ padding: 20, height: '102%' }}>
       <View style={styles.container}>
         <Text style={{ color: 'white' }}>Jay Shree Ram</Text>
-        {/* s<Image style={styles.userImage} source={require('../../assets/images/shri_ram.jpg')} /> */}
+        <CustomButton title='TicTacToe' onPress={
+          ()=>{
+            navigation.push('TicTacToe')
+          }
+        }></CustomButton>
         <CustomButton title="Custom Home" onPress={() => {
           navigation.push("CustomHome");
         }} />
