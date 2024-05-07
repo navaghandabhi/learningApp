@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Switch } from 'react-native-gesture-handler'
+import MyRajes from '../Components/Rajes';
 
 export default function Setting() {
   // const {isDarkMode,setDarkMode }= useContext(AppContext)
@@ -15,6 +16,7 @@ export default function Setting() {
           onValueChange={toggleSwitch1}
           value={isDarkMode}
         />
+        <MyRajes name='sava'>children</MyRajes>
       </View>
     </View>
   )

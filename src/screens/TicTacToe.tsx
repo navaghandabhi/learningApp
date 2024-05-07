@@ -152,7 +152,6 @@ const TicTacToe = () => {
                         }>
                         <View style={styles.boxStyle}>
                             {boxIdList[index].icon == '' ? <MIcon name='blank' size={44} ></MIcon> : <Icon name={boxIdList[index].icon} size={44} />}
-
                         </View>
                     </TouchableOpacity>
                 )

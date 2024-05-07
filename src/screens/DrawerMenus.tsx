@@ -21,6 +21,7 @@ import TimerView from './TimerView';
 import ApiIntegration from './ApiIntegration';
 import FlatLIst from './FlatLIst';
 import TicTacToe from './TicTacToe';
+import CustomHome from './CustomHome';
 
 export const Drawer = createDrawerNavigator();
 
@@ -64,6 +65,10 @@ function DrawerMenus() {
         <Drawer.Screen name="TicTacToe" component={TicTacToe} options={{
           title: "TicTacToe",
           drawerIcon: ({ color, size }) => (<MIcon name='gamepad-square-outline' color={color} size={size}></MIcon>)
+        }} />
+        <Drawer.Screen name="CustomHome" component={CustomHome} options={{
+          title: "Custom Home",
+          drawerIcon: ({ color, size }) => (<Icon name='home-outline' color={color} size={size}></Icon>)
         }} />
         <Drawer.Screen name="FlatLIst" component={FlatLIst} options={{
           title: "FlatLIst",
